@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars, Text, Float, Sphere, MeshDistortMaterial, Environment } from '@react-three/drei';
+import { OrbitControls, Stars, Text, Sphere, MeshDistortMaterial, Environment } from '@react-three/drei';
 import { motion } from 'framer-motion';
 
 // 3D Destination Globe Component
@@ -18,7 +18,7 @@ function DestinationGlobe({ destination }) {
   return (
     <group>
       {Object.entries(destinations).map(([key, dest]) => (
-        <Float key={key} speed={1 + Math.random()} rotationIntensity={0.5} floatIntensity={2}>
+        <group key={key}>
           <mesh 
             position={dest.position} 
             onClick={() => destination.setActive(key)}
@@ -42,7 +42,7 @@ function DestinationGlobe({ destination }) {
           >
             {dest.name}
           </Text>
-        </Float>
+        </group>
       ))}
     </group>
   );

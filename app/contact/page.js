@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars, Float } from '@react-three/drei';
+import { OrbitControls, Stars } from '@react-three/drei';
 import { motion } from 'framer-motion';
 
 // 3D Contact Globe Component
 function ContactGlobe() {
   return (
-    <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1}>
+    <group>
       <mesh>
         <sphereGeometry args={[1.5, 64, 64]} />
         <meshStandardMaterial 
@@ -27,15 +27,13 @@ function ContactGlobe() {
         const y = (i % 3 === 0) ? 1 : (i % 3 === 1) ? -1 : 0;
         
         return (
-          <Float key={i} speed={2} rotationIntensity={0.5} floatIntensity={2}>
-            <mesh position={[x, y, z]}>
-              <sphereGeometry args={[0.1, 16, 16]} />
-              <meshStandardMaterial color="#ec4899" emissive="#ec4899" emissiveIntensity={2} />
-            </mesh>
-          </Float>
+          <mesh key={i} position={[x, y, z]}>
+            <sphereGeometry args={[0.1, 16, 16]} />
+            <meshStandardMaterial color="#ec4899" emissive="#ec4899" emissiveIntensity={2} />
+          </mesh>
         );
       })}
-    </Float>
+    </group>
   );
 }
 

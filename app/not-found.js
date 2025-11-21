@@ -2,15 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars, Float } from '@react-three/drei';
+import { OrbitControls, Stars } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 // 3D Error Globe Component
 function ErrorGlobe() {
   return (
-    <Float speed={1} rotationIntensity={0.5} floatIntensity={1}>
-      <mesh>
+    <group>
+      <mesh position={[0, 0, 0]}>
         <sphereGeometry args={[1, 32, 32]} />
         <meshStandardMaterial 
           color="#ef4444" 
@@ -28,15 +28,13 @@ function ErrorGlobe() {
         const y = Math.sin(angle * 2) * 0.5;
         
         return (
-          <Float key={i} speed={1.5} rotationIntensity={0.5} floatIntensity={2}>
-            <mesh position={[x, y, z]}>
-              <octahedronGeometry args={[0.15, 0]} />
-              <meshStandardMaterial color="#f59e0b" emissive="#f59e0b" emissiveIntensity={2} />
-            </mesh>
-          </Float>
+          <mesh key={i} position={[x, y, z]}>
+            <octahedronGeometry args={[0.15, 0]} />
+            <meshStandardMaterial color="#f59e0b" emissive="#f59e0b" emissiveIntensity={2} />
+          </mesh>
         );
       })}
-    </Float>
+    </group>
   );
 }
 

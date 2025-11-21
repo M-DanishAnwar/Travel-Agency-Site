@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars, Float } from '@react-three/drei';
+import { OrbitControls, Stars } from '@react-three/drei';
 import { motion } from 'framer-motion';
 
 // 3D Team Globe Component
@@ -18,32 +18,28 @@ function TeamGlobe() {
   return (
     <group>
       {teamPositions.map((pos, index) => (
-        <Float key={index} speed={1.5} rotationIntensity={0.5} floatIntensity={2}>
-          <mesh position={pos.position}>
-            <sphereGeometry args={[0.5, 32, 32]} />
-            <meshStandardMaterial 
-              color={pos.color} 
-              emissive={pos.color}
-              emissiveIntensity={0.2}
-              roughness={0.1}
-              metalness={0.5}
-            />
-          </mesh>
-        </Float>
+        <mesh key={index} position={pos.position}>
+          <sphereGeometry args={[0.5, 32, 32]} />
+          <meshStandardMaterial 
+            color={pos.color} 
+            emissive={pos.color}
+            emissiveIntensity={0.2}
+            roughness={0.1}
+            metalness={0.5}
+          />
+        </mesh>
       ))}
       
       {/* Central Earth */}
-      <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-        <mesh position={[0, 0, 0]}>
-          <sphereGeometry args={[1.5, 64, 64]} />
-          <meshStandardMaterial 
-            color="#3b82f6" 
-            wireframe={true}
-            transparent={true}
-            opacity={0.7}
-          />
-        </mesh>
-      </Float>
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[1.5, 64, 64]} />
+        <meshStandardMaterial 
+          color="#3b82f6" 
+          wireframe={true}
+          transparent={true}
+          opacity={0.7}
+        />
+      </mesh>
     </group>
   );
 }
