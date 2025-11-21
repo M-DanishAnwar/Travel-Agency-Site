@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+canvas {
+  display: block;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
+               0 0 20px rgba(255, 255, 255, 0.5),
+               0 0 30px rgba(100, 150, 255, 0.3);
+}
+
+.glow-border {
+  box-shadow: 0 0 15px rgba(100, 150, 255, 0.5);
+}
+
+/* 3D Navigation specific styles */
+.nav-3d {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.nav-item-3d {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-item-3d:hover {
+  transform: translateY(-5px) scale(1.05);
+  z-index: 10;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glowing effect */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(100, 150, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(100, 150, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(100, 150, 255, 0.5);
+  }
+}
+
+.glowing {
+  animation: glow 2s ease-in-out infinite;
+}
