@@ -2,35 +2,34 @@
 # Dependencies
 node_modules/
 
-# Build outputs
+# Build artifacts
 .next/
 dist/
 build/
 out/
 
-# Environment variables
+# Environment
 .env
 .env.local
 .env.*
 
-# Editor/IDE files
+# Logs
+*.log
+
+# Editor/IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*.tmp
 
-# Logs
-*.log
-
-# OS generated files
+# OS
 .DS_Store
 Thumbs.db
 
-# Coverage reports
+# Coverage
 coverage/
 htmlcov/
-*.coverage
+.coverage
 
 # Python
 __pycache__/
@@ -38,45 +37,12 @@ __pycache__/
 *.pyo
 *.pyd
 .Python
-env/
-venv/
-.venv/
-pip-log.txt
-pip-delete-this-directory.txt
+*.so
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
 .tox/
 .coverage
-.coverage.*
-.cache
 nosetests.xml
-coverage.xml
-*.cover
-*.log
-.git/
-.mypy_cache/
-.pytest_cache/
-.hypothesis/
-
-# Node.js
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-node_modules/
-dist/
-build/
-.next/
-coverage/
-.nyc_output/
-*.log
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.next/
-out/
-.nuxt/
-public/nuxt/
-.nuxt/
-.output/
-app/.next/
 ```

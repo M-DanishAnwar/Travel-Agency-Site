@@ -2,14 +2,14 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars, Text, Float } from '@react-three/drei';
+import { OrbitControls, Stars, Text } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 // 3D Globe Component
 function Globe() {
   return (
-    <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1}>
+    <group>
       <mesh>
         <sphereGeometry args={[2, 64, 64]} />
         <meshStandardMaterial 
@@ -29,15 +29,13 @@ function Globe() {
         const z = Math.cos(phi) * 2.5;
         
         return (
-          <Float key={i} speed={2} rotationIntensity={0.5} floatIntensity={2}>
-            <mesh position={[x, y, z]}>
-              <sphereGeometry args={[0.05, 16, 16]} />
-              <meshStandardMaterial color="#ec4899" emissive="#ec4899" emissiveIntensity={2} />
-            </mesh>
-          </Float>
+          <mesh key={i} position={[x, y, z]}>
+            <sphereGeometry args={[0.05, 16, 16]} />
+            <meshStandardMaterial color="#ec4899" emissive="#ec4899" emissiveIntensity={2} />
+          </mesh>
         );
       })}
-    </Float>
+    </group>
   );
 }
 
